@@ -1,0 +1,35 @@
+<!-- A simple asynchronous test suite. -->
+
+<html>
+<head>
+  <title>Test Suite</title>
+  <script>
+    (function(){
+      this.func1 = function(name, fn) {
+        console.log('func1: ' + name);
+        setTimeout(function() {
+          fn();
+        }, 2000)
+        console.log('func1 finished.')
+      }
+    })();
+
+    window.onload = function(){
+      console.log('window.onload()')
+
+
+      func1('name1', function() {
+        console.log('\tinside func1 calling');
+      })
+
+    };
+  </script>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+</body>
+</html>
